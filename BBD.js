@@ -116,10 +116,11 @@ function validateCheckSum(idNumber) {
 function isFibo(valueToCheck, previousValue, currentValue) {
   return currentValue > valueToCheck
     ? false
-    : valueToCheck == currentValue
+    : currentValue > previousValue && valueToCheck == currentValue + previousValue // original condition was valueTocheck == currentValue
     ? true
-    : isFibo(valueToCheck, previousValue + currentValue, currentValue);
+    : isFibo(valueToCheck, currentValue, previousValue + currentValue); // switched 2nd and 3rd args
 }
+console.log(isFibo(3,1,5))
 
 //question 9 String Reverse
 function reverseWords(originalString) {
