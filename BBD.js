@@ -57,7 +57,7 @@ function translateToBraille(toTranslate) {
   
   for (let i = 0; i < toTranslate.length; i++) {
     brailleWord +=
-      toTranslate[i] == toTranslate[i].toUpperCase() ? "000001"+braille[toTranslate[i].toLowerCase()] : braille[toTranslate[i]];
+      toTranslateword == toTranslateword.toUpperCase() ? "000001"+braille[toTranslateword.toLowerCase()] : braille[toTranslateword];
   }
   return brailleWord;
 }
@@ -120,7 +120,7 @@ function isFibo(valueToCheck, previousValue, currentValue) {
     ? true
     : isFibo(valueToCheck, currentValue, previousValue + currentValue); // switched 2nd and 3rd args
 }
-console.log(isFibo(3,1,5))
+// console.log(isFibo(3,1,5))
 
 //question 9 String Reverse
 function reverseWords(originalString) {
@@ -129,19 +129,17 @@ function reverseWords(originalString) {
 
   for (let word of words) {
     let spChars = "";
-    for (let i = word.length; i >= 0; i--) {
-      if (
-        (word[i].charCodeAt(i) > 47 && word[i].charCodeAt(i) < 58) ||
-        (word[i].charCodeAt(i) > 64 && word[i].charCodeAt(i) < 91) ||
-        (word[i].charCodeAt(i) > 96 && word[i].charCodeAt(i) < 123)
+    for (let i = word.length -1; i >= 0; i--) { // added -1
+      if ( // removed [i] from word[i]
+        (word.charCodeAt(i) > 47 && word.charCodeAt(i) < 58) ||
+        (word.charCodeAt(i) > 64 && word.charCodeAt(i) < 91) ||
+        (word.charCodeAt(i) > 96 && word.charCodeAt(i) < 123)
       )
         newString = newString + word[i];
       else spChars = spChars + word[i];
     }
-    newString = newString + spChars + "";
+    newString = newString + spChars + " "; // changed from "" no space to space " "
   }
-
   return newString;
 }
-
-// console.log(reverseWords('phindi is really cool'))
+// console.log(reverseWords('phindi, is really coco'))
